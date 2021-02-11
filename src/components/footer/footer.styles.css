@@ -1,0 +1,21 @@
+.footer {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: var(--color-grey-4);
+}
+
+.footer > p {
+	width: 40%;
+	border-top: 1px solid var(--color-grey-3);
+	padding-top: var(--space-md);
+}
+
+.footer a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
