@@ -2,22 +2,20 @@ import React from "react";
 
 import "./card.styles.css";
 
-const Card = ({ stay }) => (
+const Card = ({ photo, title, superHost, type, rating }) => (
 	<section className="card">
-		<img className="card__image" src={stay.photo} alt={stay.title} />
+		<img className="card__image" src={photo} alt={title} />
 		<div className="card__properties">
 			<div className="card__column">
-				{stay.superHost && (
-					<p className="card__superhost">super host</p>
-				)}
-				<p className="card__stay-type">{stay.type}</p>
+				{superHost && <p className="card__superhost">super host</p>}
+				<p className="card__stay-type">{type}</p>
 			</div>
 			<div className="card__rating-wrapper">
 				<i className="material-icons">star_rate</i>
-				<p className="card__rating">{stay.rating}</p>
+				<p className="card__rating">{rating}</p>
 			</div>
 		</div>
-		<h2 className="card__title">{stay.title}</h2>
+		<h2 className="card__title">{title}</h2>
 	</section>
 );
 

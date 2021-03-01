@@ -1,0 +1,60 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-container {
+	position: relative;
+}
+
+.input > input {
+	font-family: var(--searchbar-font);
+	font-size: var(--text-sm);
+	padding: var(--space-lg) var(--space-md) var(--space-sm);
+	border: none;
+	border-radius: 16px;
+	outline: none;
+}
+
+.input > input::placeholder {
+	color: var(--color-grey-3);
+}
+
+.input--focus:focus {
+	border: 1px solid var(--color-black);
+	border-radius: 16px;
+	filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
+}
+
+.input__label {
+	position: absolute;
+	top: var(--space-md);
+	left: var(--space-lg);
+	font-size: var(--text-xxs);
+	font-weight: 800;
+	color: var(--color-black);
+	text-transform: uppercase;
+	z-index: 1;
+}
+
+/* Full Width */
+.input--fullwidth {
+	width: 100%;
+}
+
+input.input--numbered {
+	padding: var(--space-xs) var(--space-lg);
+	border: none;
+	border-radius: 0;
+	outline: none;
+	text-align: center;
+	color: var(--color-black);
+	font-weight: 700;
+}
+
+.input--numbered:focus {
+	border: unset;
+	border-radius: unset;
+	filter: unset;
+}

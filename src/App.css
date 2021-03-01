@@ -28,6 +28,9 @@
   --text-sm: 14px;
   --text-xs: 12px;
   --text-xxs: 9px;
+
+  /* Border size | Global */
+  --border-value: 1px solid var(--color-white);
 }
 
 .material-icons {
@@ -38,6 +41,18 @@
 .App {
   font-family: var(--main-font);
   margin: var(--space-md) var(--space-xxl);
+}
+
+.App__card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-column-gap: var(--space-md);
+  grid-row-gap: var(--space-xl);
+  margin-bottom: var(--space-xxl);
+}
+
+.App__card-list .card {
+  width: 100%;
 }
 
 .stays__heading {
@@ -52,7 +67,34 @@
 }
 
 .stays__total {
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-grey-1);
+}
+
+@media screen and (max-width: 767.98px) {
+  .App {
+    margin: var(--space-sm) var(--space-sm);
+  }
+}
+
+@media screen and (max-width: 398px) {
+  :root {
+    --text-lg: 18px;
+    --text-md: 14px;
+    --text-sm: 12px;
+    --text-xs: 10px;
+  }
+
+  .App__card-list .card__properties {
+    height: 40px;
+  }
+
+  .App__card-list .card__image {
+    height: 220px;
+  }
+
+  .App__card-list {
+    grid-row-gap: var(--space-lg);
+  }
 }

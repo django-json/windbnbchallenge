@@ -1,4 +1,32 @@
 .header {
-	height: 100px;
-	/*background: grey;*/
+	height: 60px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var(--space-lg);
+}
+
+@media screen and (max-width: 767.98px) {
+	.header {
+		height: 85px;
+	}
+
+	.header__logo {
+		flex-basis: 100%;
+	}
+
+	/* Overriding Searchbar Styles*/
+	.header > .searchbar {
+		flex-basis: 100%;
+		margin-top: var(--space-lg);
+		padding: 0 var(--space-md);
+	}
+}
+
+@media screen and (max-width: 335px) {
+	/* Overriding Searchbar Styles*/
+	.header > .searchbar {
+		padding: 0 var(--space-sm);
+	}
 }

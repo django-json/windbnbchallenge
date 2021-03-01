@@ -1,0 +1,268 @@
+.searchbar {
+	font-family: var(--searchbar-font);
+	font-size: 14px;
+}
+
+.searchbar__wrapper {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr .8fr .2fr;
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 16px;
+}
+
+.searchbar__city,
+.searchbar__guests {
+	font-size: inherit;
+	display: inline-block;
+	margin: 0;
+	padding: calc(var(--space-md) * .05) calc(var(--space-md) * 0.7);
+	border-right: 1px solid var(--color-white);
+}
+
+.searchbar__icon-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.searchbar__icon {
+	padding: var(--space-xs) calc(var(--space-sm) * 0.6);
+}
+
+.searchbar__city {
+	color: var(--color-black);
+}
+
+.searchbar__guests {
+	color: var(--color-grey-3);
+}
+
+.searchbar__icon.material-icons {
+	font-size: 22px;
+}
+
+.searchbar__collapsible {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	transition: background .2s;
+
+	display: flex;
+	flex-direction: column;
+	padding: var(--space-xxl) var(--space-xxl);
+
+	/* Modal Font styles correction */
+	font-family: var(--searchbar-font);
+	font-size: 14px;
+}
+
+.searchbar__collapsible-header {
+	display: none;
+}
+
+.searchbar__collapsible-header > p {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--color-black);
+}
+
+.searchbar__collapsible-header > .btn {
+	border: none;
+	margin-right: -5px;
+}
+
+.searchbar__collapsible-header > .btn > .material-icons {
+	color: var(--color-black);
+}
+
+.searchbar__collapsible-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr .9fr;
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 16px;
+	width: 100%;
+}
+
+.searchbar__button-container {
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	height: 50px;
+}
+
+/* Overriding Input Styles */
+.input-container:nth-child(2) {
+	border-left: var(--border-value);
+	border-right: var(--border-value);
+}
+
+.searchbar__options {
+	display: grid;
+	grid-template-columns: 1fr 1fr .9fr;
+	grid-template-areas:
+	'l-list g-type .';
+	margin-top: var(--space-lg);
+}
+
+.searchbar__location-list {
+	grid-area: l-list;
+	padding-left: var(--space-sm);
+}
+
+.searchbar__guests-type {
+	grid-area: g-type;
+	padding-left: var(--space-md);
+}
+
+.searchbar__guests-type .input-container:nth-child(2) {
+	border-left: unset;
+	border-right: unset;
+}
+
+.searchbar__guests-type .btn:focus,
+.searchbar__guests-type .btn:hover {
+	border: 2px solid var(--color-orange);
+}
+
+.searchbar__guests-type .btn:focus > .material-icons,
+.searchbar__guests-type .btn:hover > .material-icons {
+	color: var(--color-orange);
+}
+
+.searchbar__guests-title {
+	font-weight: 700;
+	font-size: inherit;
+	margin: 0;
+}
+
+.searchbar__guests-subtitle {
+	font-size: inherit;
+	color: var(--color-grey-3);
+	margin-top: 0;
+}
+
+.searchbar__guest-adult,
+.searchbar__guest-children {
+	width: 90px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.searchbar__guest-adult {
+	margin-bottom: var(--space-lg);
+}
+
+.searchbar__guest-adult > .btn > .material-icons,
+.searchbar__guest-children > .btn > .material-icons {
+	font-size: inherit;
+	color: var(--color-grey-2);
+}
+
+/* Button Positioning */
+.searchbar__guest-adult > .btn,
+.searchbar__guest-children > .btn {
+	position: absolute;
+}
+
+.searchbar__guests-type .btn--remove {
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.searchbar__guests-type .btn--add {
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.searchbar__collapsible .searchbar__options {
+	width: 100%;
+}
+
+/* Hovering styles for each address item*/
+.searchbar__location-list .address:hover {
+	color: var(--color-orange);
+} 
+
+/*Prevents background page from scrolling when the modal is open*/
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+	overflow: hidden;
+}
+
+/* Modal Layout Styles */
+.searchbar__modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 30%;
+	outline: none;
+}
+
+.searchbar__modal--overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(79, 79, 79, 0.4);
+	overflow: none;
+}
+
+@media screen and (max-width: 767.98px) {
+	.searchbar__collapsible {
+		height: 95vh;
+		padding: var(--space-sm) var(--space-sm);
+	}
+
+	.searchbar__collapsible-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.searchbar__collapsible-wrapper {
+		grid-template-columns: 1fr;
+		grid-template-areas: 
+		'in-f'
+		'in-s'
+		'.'
+		'.'
+		'b';
+	}
+
+	.searchbar__collapsible-wrapper .input-container:first-child {
+		grid-area: in-f;
+	}
+
+	.searchbar__collapsible-wrapper .input-container:nth-child(2) {
+		grid-area: in-s;
+		border-left: unset;
+		border-right: unset;
+		border-top: var(--border-value);
+	}
+
+	.searchbar__button-container {
+		position: absolute;
+		bottom: var(--space-lg);
+		left: 50%;
+	}
+
+	.searchbar__button-container .btn {
+		margin-left: -65px;
+	}
+
+	.searchbar__options {
+		display: inline-block;
+	}
+
+	/* Modal Layout Styles */
+	.searchbar__modal {
+		bottom: 10%;
+	}
+}

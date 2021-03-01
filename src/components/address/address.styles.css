@@ -1,0 +1,21 @@
+.address {
+	display: flex;
+	align-items: center;
+	font-family: inherit;
+	font-weight: 400;
+	font-size: 14px;
+	color: var(--color-grey-1);
+	margin-bottom: var(--space-lg);
+	cursor: pointer;
+}
+
+.address .material-icons {
+	font-size: 20px;
+	color: var(--color-grey-1);
+	margin-right: var(--space-xs);
+}
+
+.address:hover,
+.address:hover > .material-icons {
+	color: var(--color-orange);
+}

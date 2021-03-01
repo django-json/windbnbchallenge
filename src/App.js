@@ -15,7 +15,7 @@ function App() {
 					<h1 className="stays__place">Stays in Finland</h1>
 					<p className="stays__total">{`${stays.length} stays`}</p>
 				</div>
-				<List stays={stays} />
+				<List className="App__card-list" items={stays} />
 			</main>
 			<Footer />
 		</div>
