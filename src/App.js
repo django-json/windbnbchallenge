@@ -121,6 +121,7 @@ class App extends Component {
 
 	toggleIsClick() {
 		this.setState({ isClick: !this.state.isClick });
+		this.toggleCaret(false);
 	}
 
 	addGuest(id) {

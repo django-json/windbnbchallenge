@@ -9,6 +9,7 @@
 	grid-template-columns: auto auto auto;
 	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 	border-radius: 16px;
+	/*min-width: 290px;*/
 }
 
 .searchbar__city,
@@ -16,7 +17,7 @@
 	font-size: inherit;
 	display: inline-block;
 	margin: 0;
-	padding: calc(var(--space-md) * .05) calc(var(--space-md) * 0.7);
+	padding: calc(var(--space-md) * 0.26) calc(var(--space-md) * 1.18);
 	border-right: 1px solid var(--color-white);
 }
 
@@ -30,7 +31,7 @@
 }
 
 .searchbar__icon {
-	padding: var(--space-xs) calc(var(--space-sm) * 0.6);
+	padding: 0 calc(var(--space-md) * 0.6);
 }
 
 .searchbar__city,
@@ -218,7 +219,7 @@
 
 @media screen and (max-width: 767.98px) {
 	.searchbar__collapsible {
-		height: 95vh;
+		height: 90vh;
 		padding: var(--space-sm) var(--space-sm);
 	}
 
@@ -266,6 +267,17 @@
 	/* Modal Layout Styles */
 	.searchbar__modal {
 		bottom: 10%;
+	}
+}
+
+@media screen and (max-width: 374.98px) {
+	.searchbar__city,
+	.searchbar__guests {
+		padding: calc(var(--space-md) * 0.26) calc(var(--space-md) * 0.7);
+	}
+
+	.searchbar__icon {
+		padding: 0 calc(var(--space-md) * 0.5);
 	}
 }
 
