@@ -28,11 +28,3 @@ List.defaultProps = {
 	items: [],
 	itemRenderer: Card,
 };
-
-// const List = ({ stays }) => (
-// 	<article className="list">
-// 		{stays.map((stay, index) => (
-// 			<Card key={index} stay={stay} />
-// 		))}
-// 	</article>
-// );

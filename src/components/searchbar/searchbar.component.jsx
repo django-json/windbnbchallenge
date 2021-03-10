@@ -129,9 +129,14 @@ const SearchBar = ({
 											handleClick={removeGuest}
 										/>
 										<Input
-											type="number"
+											type="text"
 											name="adult"
-											value={Number(guests.adult)}
+											value={
+												guests.adult > 0
+													? guests.adult
+													: ""
+											}
+											placeholder="0"
 											id="adult"
 											variant="numbered"
 											fullWidth
@@ -162,9 +167,14 @@ const SearchBar = ({
 											handleClick={removeGuest}
 										/>
 										<Input
-											type="number"
+											type="text"
 											name="children"
-											value={Number(guests.children)}
+											value={
+												guests.children > 0
+													? guests.children
+													: ""
+											}
+											placeholder="0"
 											id="children"
 											variant="numbered"
 											fullWidth

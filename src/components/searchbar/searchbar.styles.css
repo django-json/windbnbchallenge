@@ -47,7 +47,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 91%;
+	height: 100%;
 	background: white;
 
 	display: flex;
@@ -117,11 +117,6 @@
 	padding-left: var(--space-md);
 }
 
-.searchbar__guests-type .input-container:nth-child(2) {
-	border-left: unset;
-	border-right: unset;
-}
-
 .searchbar__guests-type .btn:focus,
 .searchbar__guests-type .btn:hover {
 	border: 2px solid var(--color-orange);
@@ -150,6 +145,12 @@
 	display: flex;
 	justify-content: space-between;
 	position: relative;
+}
+
+/* Overriding Input placeholder color*/
+.searchbar__guest-adult > .input > input::placeholder,
+.searchbar__guest-children > .input > input::placeholder {
+	color: var(--color-black);
 }
 
 .searchbar__guest-adult {
@@ -267,3 +268,4 @@
 		bottom: 10%;
 	}
 }
+

@@ -40,7 +40,7 @@ class App extends Component {
 		this.addGuest = this.addGuest.bind(this);
 		this.removeGuest = this.removeGuest.bind(this);
 		this.filterStays = this.filterStays.bind(this);
-		this.updateTotalStays = this.updateTotalStays.bind(this);
+		this.updateTotalGuests = this.updateTotalGuests.bind(this);
 	}
 
 	componentDidMount() {
@@ -74,20 +74,26 @@ class App extends Component {
 				this.debounceCaret();
 				break;
 			case "adult":
-				console.log(typeof Number(value));
 				this.setState({
-					...this.state,
-					guests: { adult: Number(value) },
+					guests: {
+						...this.state.guests,
+						adult: Number(value.replace(/\D/, "")),
+					},
 				});
 				break;
 			case "children":
 				this.setState({
-					...this.state,
-					guests: { children: Number(value) },
+					guests: {
+						...this.state.guests,
+						children: Number(value.replace(/\D/, "")),
+					},
 				});
+				break;
 			default:
 				break;
 		}
+
+		this.updateTotalGuests();
 	}
 
 	toggleCaret(booleanValue) {
@@ -139,7 +145,7 @@ class App extends Component {
 				break;
 		}
 
-		this.updateTotalStays();
+		this.updateTotalGuests();
 	}
 
 	removeGuest(id) {
@@ -148,9 +154,9 @@ class App extends Component {
 				this.setState({
 					guests: {
 						...this.state.guests,
-						adult:
-							isGreaterThanZero(this.state.guests.adult) &&
-							this.state.guests.adult - 1,
+						adult: isGreaterThanZero(this.state.guests.adult)
+							? this.state.guests.adult - 1
+							: this.state.guests.adult,
 					},
 				});
 				break;
@@ -158,9 +164,9 @@ class App extends Component {
 				this.setState({
 					guests: {
 						...this.state.guests,
-						children:
-							isGreaterThanZero(this.state.guests.children) &&
-							this.state.guests.children - 1,
+						children: isGreaterThanZero(this.state.guests.children)
+							? this.state.guests.children - 1
+							: this.state.guests.children,
 					},
 				});
 				break;
@@ -168,10 +174,10 @@ class App extends Component {
 				break;
 		}
 
-		this.updateTotalStays();
+		this.updateTotalGuests();
 	}
 
-	updateTotalStays() {
+	updateTotalGuests() {
 		this.setState((state) => ({
 			guests: {
 				...state.guests,
