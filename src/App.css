@@ -72,6 +72,10 @@
   color: var(--color-grey-1);
 }
 
+.stays__unavailable {
+  text-align: center;
+}
+
 @media screen and (max-width: 767.98px) {
   .App {
     margin: var(--space-sm) var(--space-sm);

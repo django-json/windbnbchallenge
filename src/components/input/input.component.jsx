@@ -4,6 +4,7 @@ import classNames from "classnames";
 import "./input.styles.css";
 
 const Input = ({
+	readOnly,
 	label,
 	fullWidth,
 	id,
@@ -33,9 +34,15 @@ const Input = ({
 				value={value}
 				id={id}
 				placeholder={placeholder}
+				onChange={handleChange}
+				readOnly={readOnly && true}
 			/>
 		</div>
 	);
 };
 
 export default Input;
+
+Input.defaultProps = {
+	handleChange: () => {},
+};

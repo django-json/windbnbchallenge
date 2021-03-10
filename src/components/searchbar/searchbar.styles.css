@@ -6,7 +6,7 @@
 .searchbar__wrapper {
 	display: grid;
 	align-items: center;
-	grid-template-columns: 1fr .8fr .2fr;
+	grid-template-columns: auto auto auto;
 	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 	border-radius: 16px;
 }
@@ -20,6 +20,10 @@
 	border-right: 1px solid var(--color-white);
 }
 
+.searchbar__placeholder {
+	color: var(--color-grey-3);
+}
+
 .searchbar__icon-wrapper {
 	display: flex;
 	justify-content: center;
@@ -29,12 +33,9 @@
 	padding: var(--space-xs) calc(var(--space-sm) * 0.6);
 }
 
-.searchbar__city {
-	color: var(--color-black);
-}
-
+.searchbar__city,
 .searchbar__guests {
-	color: var(--color-grey-3);
+	color: var(--color-black);
 }
 
 .searchbar__icon.material-icons {
@@ -46,8 +47,8 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: 91%;
 	background: white;
-	transition: background .2s;
 
 	display: flex;
 	flex-direction: column;
@@ -56,6 +57,7 @@
 	/* Modal Font styles correction */
 	font-family: var(--searchbar-font);
 	font-size: 14px;
+	z-index: 1;
 }
 
 .searchbar__collapsible-header {
@@ -92,8 +94,7 @@
 	height: 50px;
 }
 
-/* Overriding Input Styles */
-.input-container:nth-child(2) {
+.searchbar__input-wrapper {
 	border-left: var(--border-value);
 	border-right: var(--border-value);
 }
@@ -240,7 +241,7 @@
 		grid-area: in-f;
 	}
 
-	.searchbar__collapsible-wrapper .input-container:nth-child(2) {
+	.searchbar__input-wrapper {
 		grid-area: in-s;
 		border-left: unset;
 		border-right: unset;

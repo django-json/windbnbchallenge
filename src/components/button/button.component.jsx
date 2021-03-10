@@ -5,7 +5,9 @@ import "./button.styles.css";
 
 const Button = ({
 	iconAsLabel,
+	id,
 	startIcon,
+	type,
 	label,
 	variant,
 	className,
@@ -16,7 +18,12 @@ const Button = ({
 	});
 
 	return (
-		<button type="button" className={classnames}>
+		<button
+			type={type ? type : "button"}
+			id={id}
+			className={classnames}
+			onClick={() => handleClick(id)}
+		>
 			{startIcon && (
 				<i className="btn__icon material-icons">{startIcon}</i>
 			)}
@@ -29,3 +36,7 @@ const Button = ({
 	);
 };
 export default Button;
+
+Button.defaultProps = {
+	handleClick: (id) => {},
+};

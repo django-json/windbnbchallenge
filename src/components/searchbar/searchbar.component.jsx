@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 
@@ -12,21 +12,36 @@ import Address from "../address/address.component";
 Modal.setAppElement("#root");
 
 const SearchBar = ({
-	city,
-	country,
+	showCaret,
 	guests,
 	addresses,
+	location,
 	modalIsOpen,
 	openModal,
 	closeModal,
+	handleChange,
+	toggleIsClick,
+	handleSearchSubmit,
+	handleLocationClick,
+	addGuest,
+	removeGuest,
+	isClick,
 }) => (
 	<section className="searchbar">
 		<div className="searchbar__wrapper" onClick={openModal}>
 			<div className="searchbar__city">
-				<p>{`${city}, ${country}`}</p>
+				{location ? (
+					<p>{location}</p>
+				) : (
+					<p className="searchbar__placeholder">Add Location</p>
+				)}
 			</div>
 			<div className="searchbar__guests">
-				<p>{guests ? `${guests} guests` : "Add guests"}</p>
+				{guests.adult || guests.children ? (
+					<p>{`${guests.adult + guests.children} guests`}</p>
+				) : (
+					<p className="searchbar__placeholder">Add guests</p>
+				)}
 			</div>
 			<div className="searchbar__icon-wrapper">
 				<i className="searchbar__icon material-icons">search</i>
@@ -42,86 +57,130 @@ const SearchBar = ({
 			<div className="searchbar__collapsible">
 				<div className="searchbar__collapsible-header">
 					<p>Edit your search</p>
-					<Button iconAsLabel="clear" variant="symbol" />
+					<Button
+						iconAsLabel="clear"
+						variant="symbol"
+						handleClick={closeModal}
+					/>
 				</div>
-				<div className="searchbar__collapsible-wrapper">
+				<form
+					className="searchbar__collapsible-wrapper"
+					onSubmit={handleSearchSubmit}
+				>
 					<Input
 						type="text"
 						name="location"
+						value={location}
 						id="location"
 						label="Location"
 						placeholder="Add location"
 						fullWidth
+						handleChange={handleChange}
 					/>
-					<Input
-						type="text"
-						name="guests"
-						id="guests"
-						label="Guests"
-						placeholder="Add Guests"
-						fullWidth
-					/>
-					<div className="searchbar__button-container">
-						<Button startIcon="search" label="Search" />
+					<div
+						className="searchbar__input-wrapper"
+						onClick={() => toggleIsClick()}
+					>
+						<Input
+							type="text"
+							name="guests"
+							value={guests.total ? `${guests.total} guests` : ""}
+							id="guests"
+							label="Guests"
+							placeholder="Add Guests"
+							fullWidth
+							readOnly
+						/>
 					</div>
-				</div>
+					<div className="searchbar__button-container">
+						<Button
+							type="submit"
+							startIcon="search"
+							label="Search"
+						/>
+					</div>
+				</form>
 				<div className="searchbar__options">
 					<section className="searchbar__location-list">
-						<List items={addresses} itemRenderer={Address} />
+						{showCaret && (
+							<List
+								items={addresses}
+								itemRenderer={Address}
+								handleLocationClick={handleLocationClick}
+							/>
+						)}
 					</section>
 					<section className="searchbar__guests-type">
-						<div>
-							<p className="searchbar__guests-title">Adults</p>
-							<p className="searchbar__guests-subtitle">
-								Ages 13 or above
-							</p>
-							<div className="searchbar__guest-adult">
-								<Button
-									className="btn--remove"
-									iconAsLabel="remove"
-									variant="symbol"
-								/>
-								<Input
-									type="number"
-									name="adult"
-									value={0}
-									id="adult"
-									variant="numbered"
-									fullWidth
-								/>
-								<Button
-									className="btn--add"
-									iconAsLabel="add"
-									variant="symbol"
-								/>
-							</div>
-						</div>
-						<div>
-							<p className="searchbar__guests-title">Children</p>
-							<p className="searchbar__guests-subtitle">
-								Ages 2 - 12
-							</p>
-							<div className="searchbar__guest-children">
-								<Button
-									className="btn--remove"
-									iconAsLabel="remove"
-									variant="symbol"
-								/>
-								<Input
-									type="number"
-									name="children"
-									value={0}
-									id="children"
-									variant="numbered"
-									fullWidth
-								/>
-								<Button
-									className="btn--add"
-									iconAsLabel="add"
-									variant="symbol"
-								/>
-							</div>
-						</div>
+						{isClick && (
+							<Fragment>
+								<div>
+									<p className="searchbar__guests-title">
+										Adults
+									</p>
+									<p className="searchbar__guests-subtitle">
+										Ages 13 or above
+									</p>
+									<div className="searchbar__guest-adult">
+										<Button
+											className="btn--remove"
+											iconAsLabel="remove"
+											variant="symbol"
+											id="adult"
+											handleClick={removeGuest}
+										/>
+										<Input
+											type="number"
+											name="adult"
+											value={Number(guests.adult)}
+											id="adult"
+											variant="numbered"
+											fullWidth
+											handleChange={handleChange}
+										/>
+										<Button
+											className="btn--add"
+											iconAsLabel="add"
+											variant="symbol"
+											id="adult"
+											handleClick={addGuest}
+										/>
+									</div>
+								</div>
+								<div>
+									<p className="searchbar__guests-title">
+										Children
+									</p>
+									<p className="searchbar__guests-subtitle">
+										Ages 2 - 12
+									</p>
+									<div className="searchbar__guest-children">
+										<Button
+											className="btn--remove"
+											iconAsLabel="remove"
+											variant="symbol"
+											id="children"
+											handleClick={removeGuest}
+										/>
+										<Input
+											type="number"
+											name="children"
+											value={Number(guests.children)}
+											id="children"
+											variant="numbered"
+											fullWidth
+											handleChange={handleChange}
+										/>
+										<Button
+											className="btn--add"
+											iconAsLabel="add"
+											variant="symbol"
+											id="children"
+											handleClick={addGuest}
+										/>
+									</div>
+								</div>
+							</Fragment>
+						)}
 					</section>
 				</div>
 			</div>
@@ -138,108 +197,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-	modalIsOpen: true,
+	modalIsOpen: false,
 	openModal: () => {},
 	closeModal: () => {},
 };
-
-// const SearchBar = ({ city, country, guests, addresses, isClick }) => (
-// 	<section className="searchbar">
-// 		{!isClick ? (
-// 			<div className="searchbar__wrapper">
-// 				<div className="searchbar__city">
-// 					<p>{`${city}, ${country}`}</p>
-// 				</div>
-// 				<div className="searchbar__guests">
-// 					<p>{guests ? `${guests} guests` : "Add guests"}</p>
-// 				</div>
-// 				<div className="searchbar__icon-wrapper">
-// 					<i className="searchbar__icon material-icons">search</i>
-// 				</div>
-// 			</div>
-// 		) : (
-// 			<div className="searchbar__collapsible">
-// 				<div className="searchbar__collapsible-wrapper">
-// 					<Input
-// 						type="text"
-// 						name="location"
-// 						id="location"
-// 						label="Location"
-// 						placeholder="Add location"
-// 						fullWidth
-// 					/>
-// 					<Input
-// 						type="text"
-// 						name="guests"
-// 						id="guests"
-// 						label="Guests"
-// 						placeholder="Add Guests"
-// 						fullWidth
-// 					/>
-// 					<div className="searchbar__button-container">
-// 						<Button startIcon="search" label="Search" />
-// 					</div>
-// 				</div>
-// 				<div className="searchbar__options">
-// 					<section className="searchbar__location-list">
-// 						<List items={addresses} itemRenderer={Address} />
-// 					</section>
-// 					<section className="searchbar__guests-type">
-// 						<div>
-// 							<p className="searchbar__guests-title">Adults</p>
-// 							<p className="searchbar__guests-subtitle">
-// 								Ages 13 or above
-// 							</p>
-// 							<div className="searchbar__guest-adult">
-// 								<Button
-// 									className="btn--remove"
-// 									iconAsLabel="remove"
-// 									variant="symbol"
-// 								/>
-// 								<Input
-// 									type="number"
-// 									name="adult"
-// 									value={0}
-// 									id="adult"
-// 									variant="numbered"
-// 									fullWidth
-// 								/>
-// 								<Button
-// 									className="btn--add"
-// 									iconAsLabel="add"
-// 									variant="symbol"
-// 								/>
-// 							</div>
-// 						</div>
-// 						<div>
-// 							<p className="searchbar__guests-title">Children</p>
-// 							<p className="searchbar__guests-subtitle">
-// 								Ages 2 - 12
-// 							</p>
-// 							<div className="searchbar__guest-children">
-// 								<Button
-// 									className="btn--remove"
-// 									iconAsLabel="remove"
-// 									variant="symbol"
-// 								/>
-// 								<Input
-// 									type="number"
-// 									name="children"
-// 									value={0}
-// 									id="children"
-// 									variant="numbered"
-// 									fullWidth
-// 								/>
-// 								<Button
-// 									className="btn--add"
-// 									iconAsLabel="add"
-// 									variant="symbol"
-// 								/>
-// 							</div>
-// 						</div>
-// 					</section>
-// 				</div>
-// 			</div>
-// 		)}
-// 	</section>
-// );
