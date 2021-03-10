@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://windbnbchallenge.netlify.app">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/django-json/windbnbchallenge">
       Solution
     </a>
     <span> | </span>
@@ -37,28 +37,32 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![windbnb-screenshot](https://user-images.githubusercontent.com/44185999/110642659-2d787280-81ee-11eb-91b5-0a87d49b8e6e.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+- You can check the demo [here](https://windbnbchallenge.netlify.app).
+- This challenge tried my patience so much as I struggled with the searchbar functionality. I really enjoyed it and learned so much while doing this challenge.
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [react-modal](https://www.npmjs.com/package/react-modal)
+- [classnames](https://www.npmjs.com/package/classnames)
+- [prop-types](https://www.npmjs.com/package/prop-types)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/3JFYedSOZqAxYuOCNmYD) was to build an application to complete the given user stories.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/3JFYedSOZqAxYuOCNmYD) was to build an application to complete the given user stories:
+
+- [x] User story: I can see a list of properties
+- [x] User story: I can see the property card with a name, rating, apartment type, and super host
+- [x] User story: I can open the filter drawer
+- [x] User story: I can filter properties by location and number of guests
+- [x] User story: I can see the number of filtered items
+- [x] User story: I can see pages following given designs
 
 ## How To Use
 
@@ -68,7 +72,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/django-json/windbnbchallenge
 
 # Install dependencies
 $ npm install
@@ -83,10 +87,10 @@ $ npm start
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
+- [react-modal](https://www.npmjs.com/package/react-modal)
+- [classnames](https://www.npmjs.com/package/classnames)
+- [prop-types](https://www.npmjs.com/package/prop-types)
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- GitHub [@django-json](https://github.com/django-json)
