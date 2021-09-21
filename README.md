@@ -87,9 +87,7 @@ $ npm start
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
-- [react-modal](https://www.npmjs.com/package/react-modal)
-- [classnames](https://www.npmjs.com/package/classnames)
-- [prop-types](https://www.npmjs.com/package/prop-types)
+- [DevChallenges](https://devchallenges.io)
 
 ## Contact
 
